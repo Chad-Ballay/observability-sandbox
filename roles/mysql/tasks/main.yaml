@@ -101,3 +101,37 @@
     owner: prometheus
     group: prometheus
 
+- name: Download Prometheus
+  sudo: yes
+  unarchive:
+    src:  https://github.com/prometheus/prometheus/releases/download/v2.0.0/prometheus-2.0.0.linux-amd64.tar.gz
+    dest: /tmp/
+    remote_src: yes
+
+- name: Move prometheus to /usr/local/bin/
+  sudo: yes
+  command: cp /tmp/prometheus-2.0.0.linux-amd64/prometheus /usr/local/bin/ 
+
+- name: Move promtool to /usr/local/bin/
+  sudo: yes
+  command: cp /tmp/prometheus-2.0.0.linux-amd64/promtool /usr/local/bin/
+
+- name: Set ownership prometheus
+  sudo: yes
+  file: 
+    path: /usr/local/bin/prometheus
+    owner: prometheus
+    group: prometheus
+
+- name: Set ownership promtool
+  sudo: yes
+  file: 
+    path: /usr/local/bin/promtool
+    owner: prometheus
+    group: prometheus
+   
+#sudo cp -r prometheus-2.0.0.linux-amd64/consoles /etc/prometheus
+#sudo cp -r prometheus-2.0.0.linux-amd64/console_libraries /etc/prometheus
+#sudo chown -R prometheus:prometheus /etc/prometheus/consoles
+#sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
+#rm -rf prometheus-2.0.0.linux-amd64.tar.gz prometheus-2.0.0.linux-amd64
