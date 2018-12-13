@@ -1,0 +1,35 @@
+---
+
+
+
+- hosts: Web
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+  - nginx
+
+- hosts: App
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+  - flask
+
+- hosts: DB
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+  - mysql
+
+- hosts: Prometheus
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+  - observability
