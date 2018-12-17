@@ -11,3 +11,6 @@ I am taking an existing project that has a three tier app since I'm too lazy rig
 1.  Create a dummy script to generate load. 
 1.  ...
 1.  Profit?
+
+## Current point
+Get Flask up.
